@@ -1,7 +1,7 @@
 # JAVA-DATE-TIME-API
 JAVA의 날짜와 시간 API
 
-## 사용하기 불편해서 악평이 자자하다는 날짜, 시간 API ##
+## 더이상 사용하면 안되는 날짜-시간 API ##
 1. java.util.Date 
 2. java.util.Calendar
 
