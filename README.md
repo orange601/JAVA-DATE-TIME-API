@@ -86,13 +86,3 @@ JAVA의 날짜와 시간 API
 
 ##### 참고 #####
 - https://d2.naver.com/helloworld/645609
-
-
-## 사용방법
-1. 회원가입
-    - 회원가입을 한다.
-2. 완료
-    - 완료를 한다.
-      + 더하고 싶으면 계속한다.
- <!-- 가로 640px 세로 450px 사이즈가 괜찮다 -->
-![완료에관련이미지](https://user-images.githubusercontent.com/24876345/142789990-bdb42e5f-67e8-4971-844a-f0111af0b135.png)
