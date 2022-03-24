@@ -55,7 +55,7 @@ JAVA의 날짜와 시간 API
 
 ## Java의 개선된 날짜, 시간 API ##
 1. Joda-Time ( 오픈소스 라이브러리 )
-2. JSR-310
+2. JSR-310 ( JAVA 표준 )
 
 ## Joda-Time ##
 1. 오픈소스 라이브러리
@@ -65,10 +65,24 @@ JAVA의 날짜와 시간 API
     - Joda-time-hibernate 모듈(http://www.joda.org/joda-time-hibernate) 을 이용하면 데이터베이스에 저장된 TIMESTAMPE 같은 타입을 Date 클래스와 같은 JDK의 기본 클래스대신 Joda-Time의 클래스로 매핑할 수 있다.
 
 ## JSR-310 ##
+- JSR 310은 자바 SE API가 자바의 현재 날짜와 시간 API를 형성하는 두 개의 기존 클래스(java.util.Date, java.util.Calendar)를 대체하는 것을 목표로
+제안 된 시간 및 일정관리 API이다.
+- 날짜와 시간 API는 JSR-310이라고도 불린다. (  JSR(Java Specification Requests)의 310번 째  )
+- API는 현재 표준으로 자리잡았고, 날짜와 시간 관련 라이브러리인 Joda-Time의 창시자인 Joda도 이 API를 만드는데 동참했다.
+- 기존 Date, Calander와 달리 Thread Safe하고, 날짜 연산 관련된 편의 기능이 많고, TimeOffset/TimeZone 관련된 기능들도 있어서 글로벌 서비스에서도 적합하다.
 - 2014년에 최종 배포되는 JDK 8에는 JSR-310이라는 표준 명세로 날짜와 시간에 대한 새로운 API가 추가되었다.
-- Joda-Time에 가장 많은 영향을 받았고, 그 밖에 Time and Money 라이브러리나 ICU 등 여러 오픈소스 라이브러리를 참고했다고 한다.
 - Spring 프레임워크 4.0에서는 JSR-310을 기본으로 지원
-- 나노초까지 다룰 수 있다
+- 나노초까지 다룰 수 있다.
+
+### LocalTime/LocalDate/LocalDateTime ###
+    - 시간대(Zone Offset/Zone Region)에 대한 정보가 전혀 없는 API이다.
+    - 한국에서 2018-09-07T08:00:04였으면 미국으로 들고가도 2018-09-07T08:00:04이다.
+이러한 경우는 생일 같은 경우 제일 적합하다.
+
+### ZoneOffset ###
+    - UTC 기준으로 시간(Time Offset)을 나타낸 것이라고 보면 된다.
+    - 우리나라는 KST를 사용하는데 KST는 UTC보다 9시간이 빠르므로 UTC +09:00으로 표기한다.
+    - ZoneOffset은 ZoneId의 자식 클래스이다.
 
 ##### 참고 #####
 - https://d2.naver.com/helloworld/645609
