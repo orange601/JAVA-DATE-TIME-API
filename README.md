@@ -29,18 +29,29 @@ JAVA의 날짜와 시간 API
     ````
     
 4. 일관성 없는 요일 상수
-
--> 어디서는 일요일이 0, 어디서는 일요일이 1
+    - Calendar.get(Calendar.DAY_OF_WEEK) 함수에서 반환한 요일은 int 값으로, 일요일이 1로 표현된다. 따라서 수요일은 4이고, 보통 Calendar.WEDNESDAY 상수와 비교해서 확인한다. 
+    - calendar.getTime() 메서드로 Date 객체를 얻어와서 Date.getDay() 메서드로 요일을 구하면 일요일은 0, 수요일은 3이 된다. 두 개의 클래스 사이에 요일 지정값에 일관성이 없는 것이다.
 
 5. Date와 Calendar 객체의 역할 분담
+    - JDK 1.0 시절에는 Date 클래스가 날짜 연산을 지원하는 유일한 클래스였다. 
+    - JDK 1.1 이후부터 Calendar 클래스가 포함되면서 날짜간의 연산, 국제화 지원 등은 Calendar 클래스에서 주로 담당하고 Date 클래스의 많은 기능이 사용되하지 않게(deprecated)되었다.
+    - 특정 시간대의 날짜를 생성한다거나, 년/월/일 같은 날짜 단위의 계산은 Date 클래스만으로는 수행하기 어렵기 때문에 날짜 연산을 위해서 Calendar 객체를 생성하고, 다시 Calendar 객체에서 Date 객체를 생성한다. 최종 결과에는 불필요한 중간 객체를 생성해야 하는 셈인데, 쓰기에도 번거롭고, Calendar 클래스는 생성 비용이 비싼 편이기 때문에 비효율적이기도 하다.
+    - 불편함을 덜기 위해 실무에서는 Date의 연산에 Apache commons Lang 라이브러리에 있는 DateUtils 클래스의 plusDays() 메서드나 plusMonth() 메서드 같은 메서드를 주로 활용한다. 그러나 DateUtils 클래스를 쓰더라도 중간 객체로 Calendar를 생성하는 것은 마찬가지다.
+    - 날짜와 시간을 모두 저장하는 클래스의 이름이 'Date'라는 점도 다소 아쉽다. Calendar.getTime() 메서드도 Date 타입을 반환하는데 메서드 이름만 봐서는 반환 타입을 예측하기가 힘들다.
 
--> 다소 치명적인데 년/월/일 계산은 Date 클래스만으로는 부족해서 왔다갔다 하는 문제가 있다. 또한 Calendar객체를 생성하고 Date 객체를 생성하는 프로세스를 거치기 때문에 번거롭고 생성비용이 비싸다.
+6. 오류에 둔감한 시간대 ID지정
+    -  시간대의 ID를 'Asia/Seoul'대신 'Seoul/Asia'로 잘못 지정한 코드다.
+    ````java
+    @Test
+    public void shouldSetGmtWhenWrongTimeZoneId(){  
+        TimeZone zone = TimeZone.getTimeZone("Seoul/Asia");
+        assertThat(zone.getID()).isEqualTo("GMT");
+    }
+    ````
+    -  코드는 오류가 발생하지 않고, 'GMT'가 ID인 시간대가 지정된 것처럼 테스트를 통과한다. 이런 특성 때문에 찾기 어려운 버그가 생길 수도 있다.
 
-6. 기타 java.util.Date 하위 클래스의 문제
-
-
-
-출처: https://jeong-pro.tistory.com/163 [기본기를 쌓는 정아마추어 코딩블로그]
+7. java.util.Date 하위 클래스의 문제
+    - java.sql.Date 클래스는 상위 클래스인 java.util.Date 클래스와 이름이 같다. 
 
 ## Java의 개선된 날짜, 시간 API ##
 1. Joda-Time ( 오픈소스 라이브러리 )
