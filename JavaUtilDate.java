@@ -5,10 +5,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class JavaUtilDate {
-	/**
-	 * @category 1582년 10월 4일의 다음 날은?
-	 * */
-	public static void main(String[] args) {
+    /**
+    * @category 1582년 10월 4일의 다음 날은?
+    * */
+    public static void main(String[] args) {
         TimeZone utc = TimeZone.getTimeZone("UTC");
         Calendar calendar = Calendar.getInstance(utc);
         calendar.set(1582, Calendar.OCTOBER , 4);
@@ -22,7 +22,7 @@ public class JavaUtilDate {
         String nextDay = toString(calendar, pattern, utc);
         // 1582.10.05을 예상하지만 1582.10.15이 출력된다.
         System.out.println(nextDay);
-	}
+    }
 	
     public static String toString(Calendar calendar, String pattern, TimeZone zone) {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
