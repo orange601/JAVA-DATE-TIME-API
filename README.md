@@ -53,7 +53,7 @@ JAVA의 날짜와 시간 API
 7. **java.util.Date 하위 클래스의 문제**
     - java.sql.Date 클래스는 상위 클래스인 java.util.Date 클래스와 이름이 같다. 
 
-## Java의 개선된 날짜, 시간 API ##
+## Java의 개선된 날짜, 시간 API (JDK 8) ##
 1. Joda-Time ( 오픈소스 라이브러리 )
 2. JSR-310 ( JAVA 표준 )
 
