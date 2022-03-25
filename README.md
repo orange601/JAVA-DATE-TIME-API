@@ -66,7 +66,7 @@ JAVA의 날짜와 시간 API
     - Joda-time-hibernate 모듈(http://www.joda.org/joda-time-hibernate) 을 이용하면 데이터베이스에 저장된 TIMESTAMPE 같은 타입을 Date 클래스와 같은 JDK의 기본 클래스대신 Joda-Time의 클래스로 매핑할 수 있다.
 
 ## JSR-310 (JDK 8) ##
-- 2014년에 최종 배포되는 **JDK8**에는 JSR-310이라는 표준 명세로 날짜와 시간에 대한 새로운 API가 추가되었다. ( java.time.* 패키지 )
+- 2014년에 최종 배포된 **JDK8**에는 JSR-310이라는 표준 명세로 날짜와 시간에 대한 새로운 API가 추가되었다. ( java.time.* 패키지 )
 - Joda-Time의 창시자인 Joda도 이 API를 만드는데 동참했다고 한다.
 - 기존 클래스(java.util.Date, java.util.Calendar)를 대체하는 것을 목표로 2007년에 처음 제안된 명세였다.
 - "JSR(Java Specification Requests)의 310번 째" 라고한다.
