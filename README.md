@@ -83,8 +83,10 @@ JAVA의 날짜와 시간 API
     - UTC 기준으로 시간(Time Offset)을 나타낸 것이라고 보면 된다.
     - 우리나라는 KST를 사용하는데 KST는 UTC보다 9시간이 빠르므로 UTC +09:00으로 표기한다.
     - ZoneOffset은 ZoneId의 자식 클래스이다.
-    
-    
+
+## JDK9 이상 ##
+- LocalDate.ofInstant(), LocalDateTime.ofInstant() 활용
+
 ## JPA-MYSQL ERROR ##
 - java.time (JSR-310)를 별다른 처리 없이 JPA를 이용해서 MySQL에 저장하면 버전에 따라서 아래와 같은 에러가 날 수도 있다.
 ````sql
