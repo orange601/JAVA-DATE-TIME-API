@@ -71,7 +71,7 @@ JAVA의 날짜와 시간 API
 - 기존 클래스(java.util.Date, java.util.Calendar)를 대체하는 것을 목표로 2007년에 처음 제안된 명세였다.
 - "JSR(Java Specification Requests)의 310번 째" 라고한다.
 - 기존 Date, Calander와 달리 Thread Safe하고, 날짜 연산 관련된 편의 기능이 많고, TimeOffset/TimeZone 관련된 기능들도 있어서 글로벌 서비스에서도 적합하다.
-- Spring 프레임워크 4.0에서는 JSR-310을 기본으로 지원
+- Spring 프레임워크 4.0에서는 JSR-310을 기본으로 지원한다.
 - 나노초까지 다룰 수 있다.
 
 ### LocalTime/LocalDate/LocalDateTime ###
