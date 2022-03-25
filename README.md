@@ -53,24 +53,24 @@ JAVA의 날짜와 시간 API
 7. **java.util.Date 하위 클래스의 문제**
     - java.sql.Date 클래스는 상위 클래스인 java.util.Date 클래스와 이름이 같다. 
 
-## Java의 개선된 날짜-시간 API (JDK 8) ##
+## Java의 개선된 날짜-시간 API 
 1. Joda-Time ( 오픈소스 라이브러리 )
 2. JSR-310 ( JAVA 표준 )
 
 ## Joda-Time ##
 1. 오픈소스 라이브러리
-2. Spring 프레임워크에서도 Joda-Time을 기본으로 지원
+2. JDK5 부터 지원
+3. Spring 프레임워크에서도 Joda-Time을 기본으로 지원
     -  Spring-web-mvc 프레임워크는 사용자가 입력한 문자열을 원하는 객체로 변환할 때 Converter라는 인터페이스를 활용하는데, 클래스 패스에 Joda-Time이 포함되어 있으면 이 라이브러리의 객체를 변화하는 Converter 구현체를 자동으로 등록한다.
-3. Hibernate 프레임워크에서도 Joda-Time을 쓸 수 있다.
+4. Hibernate 프레임워크에서도 Joda-Time을 쓸 수 있다.
     - Joda-time-hibernate 모듈(http://www.joda.org/joda-time-hibernate) 을 이용하면 데이터베이스에 저장된 TIMESTAMPE 같은 타입을 Date 클래스와 같은 JDK의 기본 클래스대신 Joda-Time의 클래스로 매핑할 수 있다.
 
-## JSR-310 ##
-- JSR 310은 자바 SE API가 자바의 현재 날짜와 시간 API를 형성하는 두 개의 기존 클래스(java.util.Date, java.util.Calendar)를 대체하는 것을 목표로
-제안 된 시간 및 일정관리 API이다.
-- 날짜와 시간 API는 JSR-310이라고도 불린다. (  JSR(Java Specification Requests)의 310번 째  )
-- API는 현재 표준으로 자리잡았고, 날짜와 시간 관련 라이브러리인 Joda-Time의 창시자인 Joda도 이 API를 만드는데 동참했다.
+## JSR-310 (JDK 8) ##
+- 2014년에 최종 배포되는 **JDK8**에는 JSR-310이라는 표준 명세로 날짜와 시간에 대한 새로운 API가 추가되었다. ( java.time.* 패키지 )
+- Joda-Time의 창시자인 Joda도 이 API를 만드는데 동참했다고 한다.
+- 기존 클래스(java.util.Date, java.util.Calendar)를 대체하는 것을 목표로 2007년에 처음 제안된 명세였다.
+- "JSR(Java Specification Requests)의 310번 째" 라고한다.
 - 기존 Date, Calander와 달리 Thread Safe하고, 날짜 연산 관련된 편의 기능이 많고, TimeOffset/TimeZone 관련된 기능들도 있어서 글로벌 서비스에서도 적합하다.
-- 2014년에 최종 배포되는 JDK 8에는 JSR-310이라는 표준 명세로 날짜와 시간에 대한 새로운 API가 추가되었다.
 - Spring 프레임워크 4.0에서는 JSR-310을 기본으로 지원
 - 나노초까지 다룰 수 있다.
 
